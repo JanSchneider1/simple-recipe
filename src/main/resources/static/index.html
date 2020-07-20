@@ -3,8 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!-- Shoelace -->
+    <link rel="stylesheet" crossorigin="anonymous"
+          href="https://unpkg.com/@shoelace-style/shoelace@2.0.0-beta.6/dist/shoelace/shoelace.css">
+    <script type="module" crossorigin="anonymous"
+            src="https://unpkg.com/@shoelace-style/shoelace@2.0.0-beta.6/dist/shoelace/shoelace.esm.js"></script>
+
+    <style>
+        :root {
+            /* Changes the primary color to a shade of orange at 90% saturation */
+            --sl-color-primary-hue: 30;
+            --sl-color-primary-saturation: 90%;
+            /*--sl-font-sans: Roboto;*/
+        }
+    </style>
 </head>
 <body>
-    Hello World!
+
+<h1>Header</h1>
+<sl-drawer label="Drawer" class="drawer-overview">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <sl-button slot="footer" type="primary">Close</sl-button>
+</sl-drawer>
+
+<sl-button>Open Drawer</sl-button>
+
+<script>
+    (() => {
+        const drawer = document.querySelector('.drawer-overview');
+        const openButton = drawer.nextElementSibling;
+        const closeButton = drawer.querySelector('sl-button[type="primary"]');
+
+        openButton.addEventListener('click', () => drawer.show());
+        closeButton.addEventListener('click', () => drawer.hide());
+    })();
+</script>
+
+<hr/>
+
+
+
+<h2>Olli's Buns</h2>
+
+<sl-tag size="medium" pill>Backen</sl-tag>
+
+
+<sl-tab-group placement="left">
+    <sl-tab slot="nav" panel="step-1">Zutaten</sl-tab>
+    <sl-tab slot="nav" panel="step-2">Vorbereitung</sl-tab>
+    <sl-tab slot="nav" panel="step-3">Teig</sl-tab>
+    <sl-tab slot="nav" panel="step-4">Backen</sl-tab>
+
+    <sl-tab-panel name="step-1">
+        <p>15g Zucker</p>
+        <p>150ml Milch (min 3.5% Fett)</p>
+        <p>40g Butter</p>
+    </sl-tab-panel>
+
+
+    <sl-tab-panel name="step-2">This is the custom tab panel.</sl-tab-panel>
+    <sl-tab-panel name="step-3">This is the advanced tab panel.</sl-tab-panel>
+    <sl-tab-panel name="step-4">This is the advanced tab panel.</sl-tab-panel>
+</sl-tab-group>
+
+<sl-alert type="info" open>
+    <sl-icon slot="icon" name="info-circle"></sl-icon>
+    <strong>Quelle:</strong>
+    <a>https://www.youtube.com/watch?v=syEoyRpSuXk&t=343s</a>
+</sl-alert>
 </body>
 </html>
